@@ -1,5 +1,6 @@
 const React = require("react");
 const ms = require("millisec");
+
 class Timer extends React.Component {
     constructor(props) {
         super(props);
@@ -36,7 +37,10 @@ class Timer extends React.Component {
         clearInterval(this.timer);
     }
     resetTimer() {
-        this.setState({time: 0, base: 1500000, noMin: false, isOn: false});
+        let yorn = confirm("Reset the timer?");
+        if (yorn === true) {
+            this.setState({time: 0, base: 1500000, noMin: false, isOn: false});
+        }
     }
     addTime() {
         this.setState({
@@ -53,37 +57,37 @@ class Timer extends React.Component {
         const start =
             this.state.time === 0 ? (
                 <button id={"start"} onClick={this.startTimer}>
-                    <img src={"play.png"}></img>
+                    <img src={"play.png"} />
                 </button>
             ) : null;
         const stop =
             this.state.time === 0 || !this.state.isOn ? null : (
                 <button id={"stop"} onClick={this.stopTimer}>
-                    <img src={"stop.png"}></img>
+                    <img src={"stop.png"} />
                 </button>
             );
         const resume =
             this.state.time === 0 || this.state.isOn ? null : (
                 <button id={"resume"} onClick={this.startTimer}>
-                    <img src={"play.png"}></img>
+                    <img src={"play.png"} />
                 </button>
             );
         const reset =
             this.state.time === 0 || this.state.isOn ? null : (
                 <button id={"reset"} onClick={this.resetTimer}>
-                    <img src={"reset.png"}></img>
+                    <img src={"reset.png"} />
                 </button>
             );
         const add =
             this.state.time === 0 ? (
                 <button id={"add"} onClick={this.addTime}>
-                    <img src={"add.png"}></img>
+                    <img src={"add.png"} />
                 </button>
             ) : null;
         const minus =
             this.state.time === 0 ? (
                 <button id={"minus"} onClick={this.minusTime}>
-                    <img src={"minus.png"}></img>
+                    <img src={"minus.png"} />
                 </button>
             ) : null;
         const result = this.state.base - this.state.time;
@@ -112,13 +116,13 @@ class Timer extends React.Component {
                 <h3 id={"timer"}>
                     {m} : {s}
                 </h3>
-                <div id='wrapBtn'>
-                  {start}
-                  {resume}
-                  {stop}
-                  {reset}
-                  {add}
-                  {minus}
+                <div id={"wrapBtn"}>
+                    {start}
+                    {resume}
+                    {stop}
+                    {reset}
+                    {add}
+                    {minus}
                 </div>
             </div>
         );

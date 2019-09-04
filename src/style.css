@@ -1,5 +1,5 @@
 body {
-    background-image: url('back.jpg');
+    /* background-image: url("https://source.unsplash.com/random/1280x720"); */
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -24,6 +24,10 @@ body {
     grid-template-rows: 50% 50%;
     border: 1px solid white;
     background-color: rgba(0, 0, 0, 0.5);
+}
+
+textarea[placeholder] {
+    text-align: center;
 }
 
 h3  {

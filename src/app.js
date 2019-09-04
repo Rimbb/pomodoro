@@ -37,7 +37,7 @@ class Timer extends React.Component {
         clearInterval(this.timer);
     }
     resetTimer() {
-        let yorn = confirm("Reset the timer?");
+        const yorn = confirm("Reset the timer?");
         if (yorn === true) {
             this.setState({time: 0, base: 1500000, noMin: false, isOn: false});
         }

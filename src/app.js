@@ -120,21 +120,21 @@ class App extends React.Component {
             />
         );
         const stop = !this.state.isOn ? null : (
-            <Bouton id={"stop"} value={"stop.png"} handleFunction={this.stop} />
+            <Bouton id={"stop"} value={"../src/assets/stop.png"} handleFunction={this.stop} />
         );
         const add =
             s !== "00" || this.state.isOn ? null : (
-                <Bouton value={"add.png"} handleFunction={this.plus} />
+                <Bouton value={"../src/assets/add.png"} handleFunction={this.plus} />
             );
         const minus =
             s !== "00" || this.state.isOn ? null : (
-                <Bouton value={"minus.png"} handleFunction={this.moins} />
+                <Bouton value={"../src/assets/minus.png"} handleFunction={this.moins} />
             );
         const reset =
             s == "00" ||
             this.state.seconds == 1500000 ||
             this.state.isOn ? null : (
-                <Bouton value={"reset.png"} handleFunction={this.reset} />
+                <Bouton value={"../src/assets/reset.png"} handleFunction={this.reset} />
             );
         return (
             <div id={"wrapper"}>

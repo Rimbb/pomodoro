@@ -113,7 +113,7 @@ class App extends React.Component {
         const start = this.state.isOn ? null : (
             <Bouton
                 id={"start"}
-                value={"play.png"}
+                value={"../src/assets/play.png"}
                 handleFunction={this.start}
             />
         );

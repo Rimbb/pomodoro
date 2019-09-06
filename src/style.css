@@ -1,10 +1,14 @@
+/************************************************ Import ************************************************/
+
 @font-face {
-    font-family: "myFont";
+    font-family: "Roboto";
     src: url("/assets/Roboto-Thin.ttf");
 }
 
+/************************************************ Body ************************************************/
 body {
-    background-image: url('/assets/back.jpg');
+
+    background-image: url("assets/back.jpg");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -12,25 +16,27 @@ body {
     height: 100vh;
     margin: 0;
     padding: 0;
-    display:grid;
+    display: flex;
     justify-content: center;
     align-items: center;
-    font-family: "myFont";
+    font-family: "Roboto";
 }
+
+/************************************************ Wrap GRID ************************************************/
 
 #wrapper {
     display:grid;
     justify-content: center;
     align-self: center;
-    margin: 3rem;
+    margin: 0;
     padding: 0;
-    height: 85vh;
-    width: 92vw;
+    height: 90vh;
+    width: 90vw;
     grid-template-columns: 33% 34% 33%;
     grid-template-rows: 50% 25% 25%;
-    /* border: 1px solid white;
-    background-color: rgba(0, 0, 0, 0.6); */
 }
+
+/************************************************ Left Col. ************************************************/
 
 #one {
     display: grid;
@@ -77,6 +83,8 @@ h5 {
     grid-row: 2 / 4;
 }
 
+/************************************************ Mid Col. ************************************************/
+
 #two {
     display: grid;
     border: 1px solid white;
@@ -85,6 +93,8 @@ h5 {
     grid-column: 2 / 3;
     grid-row: 1 / 4;
 }
+
+/************************************************ Right Col. ************************************************/
 
 #three {
     display: flex;
@@ -98,9 +108,7 @@ h5 {
 }
 
 h3  {
-    /* top: 5rem; */
     color: white;
-    /* margin: 4rem 0 5rem 0; */
     font-size: 4.5rem;
     padding: 2rem;
     border-bottom: 1px solid rgba(255, 255, 255, 0.7);
@@ -115,19 +123,41 @@ h3  {
 
 button {
     background-color: rgba(255, 255, 255, 0);
-    padding: 15px 32px;
-    text-align: center;
-    border: none;
-    text-decoration: none;
-    display: inline-block;
+    margin: 3rem 0 0 0;
     width: 5rem;
-    height: 3rem;
+    height: 2.5rem;
     border: 1px solid rgba(255, 255, 255, 0.7);
 }
 
-img {
-    width: 1rem;
-    height: 100%;
+#play {
+    background-image: url("assets/play.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 1rem;
+}
+#add {
+    background-image: url("assets/add.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 1rem;
+}
+#minus {
+    background-image: url("assets/minus.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 1rem;
+}
+#reset {
+    background-image: url("assets/reset.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 1rem;
+}
+#stop {
+    background-image: url("assets/stop.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 1rem;
 }
 
 button:hover {
@@ -163,6 +193,8 @@ a:hover {
     animation-fill-mode: forwards;
     animation-duration: 1s;
 }
+
+/************************************************ Animations ************************************************/
 
 @keyframes borderbottom {
     from {

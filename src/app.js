@@ -3,7 +3,9 @@ import React from "react";
 import ReactDOM from "react-dom";
 import Timer from "./components/timer";
 import Bouton from "./components/bouton";
+
 const ms = require("millisec");
+
 const url = "https://picsum.photos/v2/list?limit=100";
 let imgArray;
 fetch(url)
@@ -19,7 +21,9 @@ fetch(url)
 
         return (
             (document.body.style.backgroundImage = `url("${rand2url}")`),
-            (document.querySelector("#author").innerHTML = `Photo by :&nbsp;&nbsp;<a href='${rand2urldisp}' target='blank'>${rand2auth}</a>`)
+            (document.querySelector(
+                "#author",
+            ).innerHTML = `Photo by :&nbsp;&nbsp;<a href='${rand2urldisp}' target='blank'>${rand2auth}</a>`)
         );
     });
 
@@ -47,6 +51,14 @@ class App extends React.Component {
             isOn: false,
             seconds: prevState.seconds + 60000,
         }));
+        if (this.state.seconds >= 3600000) {
+            clearInterval(this.intervalID);
+            this.intervalID = null;
+            this.setState(() => ({
+                isOn: false,
+                seconds: 0,
+            }));
+        }
     }
 
     moinsFunction() {
@@ -54,6 +66,14 @@ class App extends React.Component {
             isOn: false,
             seconds: prevState.seconds - 60000,
         }));
+        if (this.state.seconds <= 0) {
+            clearInterval(this.intervalID);
+            this.intervalID = null;
+            this.setState(() => ({
+                isOn: false,
+                seconds: 0,
+            }));
+        }
     }
 
     decrementFunction() {
@@ -64,6 +84,10 @@ class App extends React.Component {
         if (this.state.seconds <= 0) {
             clearInterval(this.intervalID);
             this.intervalID = null;
+            this.setState(() => ({
+                isOn: false,
+                seconds: this.defaultTimer,
+            }));
         }
     }
 
@@ -111,30 +135,20 @@ class App extends React.Component {
         }
         const finaltimer = `${m} : ${s}`;
         const start = this.state.isOn ? null : (
-            <Bouton
-                id={"start"}
-                value={"../src/assets/play.png"}
-                handleFunction={this.start}
-            />
+            <Bouton id={"start"} value={"play"} handleFunction={this.start} />
         );
         const stop = !this.state.isOn ? null : (
-            <Bouton
-                id={"stop"}
-                value={"../src/assets/stop.png"}
-                handleFunction={this.stop}
-            />
+            <Bouton id={"stop"} value={"stop"} handleFunction={this.stop} />
         );
         const add =
             s !== "00" || this.state.isOn ? null : (
-                <Bouton
-                    value={"../src/assets/add.png"}
-                    handleFunction={this.plus}
-                />
+                <Bouton id={"add"} value={"add"} handleFunction={this.plus} />
             );
         const minus =
             s !== "00" || this.state.isOn ? null : (
                 <Bouton
-                    value={"../src/assets/minus.png"}
+                    id={"minus"}
+                    value={"minus"}
                     handleFunction={this.moins}
                 />
             );
@@ -143,7 +157,8 @@ class App extends React.Component {
             this.state.seconds === 1500000 ||
             this.state.isOn ? null : (
                 <Bouton
-                    value={"../src/assets/reset.png"}
+                    id={"reset"}
+                    value={"reset"}
                     handleFunction={this.reset}
                 />
             );
